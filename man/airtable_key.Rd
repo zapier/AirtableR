@@ -8,7 +8,7 @@ otherwise set Airtable API key}
 airtable_key(force = FALSE)
 }
 \arguments{
-\item{force}{A length-one logical vector}
+\item{force}{An optional length-one logical vector}
 }
 \value{
 A length-one character vecotr
