@@ -1,16 +1,18 @@
 #' List records 
 #'
 #' List records or retreive a particular record by issuing GET request to a table/record endpoint
-#' @param endpoint A length-one character vector. Path to a table in your Airtable account. e.g "appANrRXq7xaOU0dd/table_name"
+#' @param table_endpoint A length-one character vector. Path to a table in your Airtable account. e.g "appANrRXq7xaOU0dd/table_name"
 #' @param query A list. Query string parameters. e.g list(page = 2)
 #' @export
 
-airtable_GET <- function(endpoint, query = NULL) {
+airtable_GET <- function(table_endpoint, record = NULL, query = NULL) { 
+
   req <- httr::GET(
     airtable_base_url(),
-    path = file.path(
+    path = airtable_endpoint(
       airtable_api_version(), 
-      endpoint
+      table_endpoint, 
+      record
     ),
     query = query,
     httr::add_headers(
@@ -23,6 +25,10 @@ airtable_GET <- function(endpoint, query = NULL) {
 
   airtable_check(req)
 
+  if (!is.null(record)) {
+    return(httr::content(req))
+  }
+
   offset  <- httr::content(req)$offset
   records <- httr::content(req)$records
 
@@ -32,16 +38,19 @@ airtable_GET <- function(endpoint, query = NULL) {
       records <- append(
         records, 
         airtable_GET(
-          endpoint, 
+          table_endpoint, 
           query = list(offset = offset)
         )
       )
     )
   } 
 
-  print(records)
+  records
 }
 
+airtable_endpoint <- function(...) {
+  paste(..., sep = "/", collapse = NULL)
+}
 
 #' Create a new record 
 #'

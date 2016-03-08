@@ -2,16 +2,16 @@
 % Please edit documentation in R/functions.R
 \name{airtable_GET}
 \alias{airtable_GET}
-\title{Get data from Airtable}
+\title{List records}
 \usage{
-airtable_GET(path, query = NULL)
+airtable_GET(table_endpoint, record = NULL, query = NULL)
 }
 \arguments{
-\item{path}{A length-one character vector. Path to a table in your Airtable account. e.g "appANrRXq7xaOU0dd/table_name"}
+\item{table_endpoint}{A length-one character vector. Path to a table in your Airtable account. e.g "appANrRXq7xaOU0dd/table_name"}
 
 \item{query}{A list. Query string parameters. e.g list(page = 2)}
 }
 \description{
-Get records from Airtable API then convert them into a list.
+List records or retreive a particular record by issuing GET request to a table/record endpoint
 }
 
