@@ -64,8 +64,7 @@ airtable_key <- function(force = FALSE) {
   }
 
   message(
-    "Couldn't find env var AIRTABLE_KEY 
-    See ?airtable_key for more details."
+    "Couldn't find env var AIRTABLE_KEY. See ?airtable_key for more details."
   )
 
   message(
