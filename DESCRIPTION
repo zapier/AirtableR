@@ -1,12 +1,12 @@
 Package: AirtableR
-Title: What the Package Does (one line, title case)
+Title: R wrapper to Airtable API 
 Version: 0.0.0.9000
-Authors@R: person("First", "Last", email = "first.last@example.com", role = c("aut", "cre"))
-Description: What the package does (one paragraph).
+Authors@R: person("Jaeseung", "Yum", email = "ym.jsng@gmail.com", role = c("aut", "cre"))
+Description: An implementation of R wrapper for Airtable API integration
 Depends: R (>= 3.2.2)
-License: What license is it under?
+License: MIT 
 LazyData: true
 Suggests: testthat
-Imports: httr,
-    RJSONIO,
-    data.table
+Imports: 
+    httr,
+    RJSONIO
