@@ -2,14 +2,14 @@
 % Please edit documentation in R/functions.R
 \name{airtable_check}
 \alias{airtable_check}
-\title{Check request}
+\title{Check request status}
 \usage{
 airtable_check(req)
 }
 \arguments{
-\item{req}{An httr::request}
+\item{req}{A httr request object}
 }
 \description{
-Check request
+Check request status
 }
 

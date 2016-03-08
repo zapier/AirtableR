@@ -2,19 +2,19 @@
 % Please edit documentation in R/functions.R
 \name{airtable_key}
 \alias{airtable_key}
-\title{Get airtable key if exists
-otherwise set airtable key}
+\title{Get Airtable API key if exists
+otherwise set Airtable API key}
 \usage{
 airtable_key(force = FALSE)
 }
 \arguments{
-\item{force}{A logical}
+\item{force}{A length-one logical vector}
 }
 \value{
-A character
+A length-one character vecotr
 }
 \description{
-Get airtable key if exists
-otherwise set airtable key
+Get Airtable API key if exists
+otherwise set Airtable API key
 }
 

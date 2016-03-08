@@ -4,16 +4,14 @@
 \alias{airtable_GET}
 \title{Get data from Airtable}
 \usage{
-airtable_GET(path, query = NULL, type = "list")
+airtable_GET(path, query = NULL)
 }
 \arguments{
 \item{path}{A length-one character vector. Path to a table in your Airtable account. e.g "appANrRXq7xaOU0dd/table_name"}
 
 \item{query}{A list. Query string parameters. e.g list(page = 2)}
-
-\item{type}{A length-one character vector. Type of return data. The default is NULL. Should be one of the following types: "list", "data.frame", "data.table". Note that data.frame and data.table flatten nested resources}
 }
 \description{
-Get records from Airtable API then convert them into a list or data.frame or data.table
+Get records from Airtable API then convert them into a list.
 }
 

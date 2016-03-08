@@ -7,7 +7,7 @@
 airtable_parse(req)
 }
 \arguments{
-\item{req}{An httr::request}
+\item{req}{A httr request object}
 }
 \description{
 Parse request
