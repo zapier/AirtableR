@@ -5,8 +5,8 @@ For more information on the Airtable API see: http://api.airtable.com/
 
 ## Quick Start
 ```r
-install.packages("AirtableR")
-library(AirtableR)
+> install.packages("AirtableR")
+> library(AirtableR)
 ```
 
 ## Set API key
