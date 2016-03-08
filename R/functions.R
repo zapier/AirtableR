@@ -1,6 +1,6 @@
 #' Get data from Airtable
 #'
-#' Get records from Airtable API then convert them into a list. 
+#' Get records from a table in Airtable account then convert them into a list. 
 #' @param path A length-one character vector. Path to a table in your Airtable account. e.g "appANrRXq7xaOU0dd/table_name"
 #' @param query A list. Query string parameters. e.g list(page = 2)
 #' @export
@@ -29,11 +29,48 @@ airtable_GET <- function(path, query = NULL) {
   # Append next page records recursively
   if (!is.null(offset)) {
     return(
-      records <- append(records, airtable_GET(path, query = list(offset = offset)))
+      records <- append(
+        records, 
+        airtable_GET(
+          path, 
+          query = list(offset = offset)
+        )
+      )
     )
   } 
 
   records
+}
+
+
+#' Post data to Airtable
+#'
+#' Post a new record data to a table in Airtable account
+#' @param path A length-one character vector. Path to a table in your Airtable account. e.g "appANrRXq7xaOU0dd/table_name" 
+#' @param body A list. Values in `fields` key.
+
+airtable_POST <- function(path, body) {
+
+  stopifnot(is.list(body))
+
+  req <- httr::POST(
+    airtable_base_url(),
+    path = file.path(
+      airtable_api_version(),
+      path
+    ),
+    body = list(fields = body),
+    encode = "json",
+    httr::add_headers(
+      Authorization = paste(
+        "Bearer",
+        airtable_key()
+      )
+    )
+  )
+
+  airtable_check(req)
+  req
 }
 
 
