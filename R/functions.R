@@ -1,9 +1,8 @@
 #' Get data from Airtable
 #'
-#' Get records from Airtable API then convert them into a list or data.frame or data.table
+#' Get records from Airtable API then convert them into a list. 
 #' @param path A length-one character vector. Path to a table in your Airtable account. e.g "appANrRXq7xaOU0dd/table_name"
 #' @param query A list. Query string parameters. e.g list(page = 2)
-#' @param type A length-one character vector. Type of return data. The default is NULL. Should be one of the following types: "list", "data.frame", "data.table". Note that data.frame and data.table flatten nested resources
 #' @export
 
 airtable_GET <- function(path, query = NULL) {
@@ -27,6 +26,7 @@ airtable_GET <- function(path, query = NULL) {
   offset  <- httr::content(req)$offset
   records <- httr::content(req)$records
 
+  # Append next page records recursively
   if (!is.null(offset)) {
     return(
       records <- append(records, airtable_GET(path, query = list(offset = offset)))
