@@ -1,16 +1,16 @@
-#' Get data from Airtable
+#' List records 
 #'
-#' Get records from a table in Airtable account then convert them into a list. 
-#' @param path A length-one character vector. Path to a table in your Airtable account. e.g "appANrRXq7xaOU0dd/table_name"
+#' List records or retreive a particular record by issuing GET request to a table/record endpoint
+#' @param endpoint A length-one character vector. Path to a table in your Airtable account. e.g "appANrRXq7xaOU0dd/table_name"
 #' @param query A list. Query string parameters. e.g list(page = 2)
 #' @export
 
-airtable_GET <- function(path, query = NULL) {
+airtable_GET <- function(endpoint, query = NULL) {
   req <- httr::GET(
     airtable_base_url(),
     path = file.path(
       airtable_api_version(), 
-      path
+      endpoint
     ),
     query = query,
     httr::add_headers(
@@ -26,35 +26,100 @@ airtable_GET <- function(path, query = NULL) {
   offset  <- httr::content(req)$offset
   records <- httr::content(req)$records
 
-  # Append next page records recursively
+  # recursively append next page records to `records` 
   if (!is.null(offset)) {
     return(
       records <- append(
         records, 
         airtable_GET(
-          path, 
+          endpoint, 
           query = list(offset = offset)
         )
       )
     )
   } 
 
-  records
+  print(records)
 }
 
 
-#' Post data to Airtable
+#' Create a new record 
 #'
-#' Post a new record data to a table in Airtable account
-#' @param path A length-one character vector. Path to a table in your Airtable account. e.g "appANrRXq7xaOU0dd/table_name" 
-#' @param body A list. Values in `fields` key.
+#' Create a new record by issuing POST request to a table endpoint 
+#' @param table_endpoint A length-one character vector. Path to a table in your Airtable account. e.g "appANrRXq7xaOU0dd/table_name" 
+#' @param fields A list
+#' @export
 
-airtable_POST <- function(path, body) {
+airtable_POST <- function(table_endpoint, fields) {
 
-  stopifnot(is.list(body))
+  stopifnot(is.list(fields))
 
-  req <- httr::POST(
-    airtable_base_url(),
+  req <- do.call(
+    "POST", 
+    request_arguments(table_endpoint, fields), 
+    envir = loadNamespace("httr")
+  )
+
+  airtable_check(req)
+  req
+}
+
+
+#' Update some(but not all) fields of a table record
+#'
+#' Update a table record by issuing a PATCH request to the record endpoint. 
+#' Note that any fields that are not included will not be updated.
+#'
+#' @param record_endpoint A length-one character vector
+#' @param fields A list
+#' @export
+
+airtable_PATCH <- function(record_endpoint, fields) {
+
+  stopifnot(is.list(fields))
+
+  req <- do.call(
+    "PATCH", 
+    request_arguments(record_endpoint, fields), 
+    envir = loadNamespace("httr")
+  )
+
+  airtable_check(req)
+  req
+}
+
+
+#' Update all fields of a table record
+#'
+#' Update a table record by issuing a PUT request to the record endpoint
+#' Note that any fields that are not included will be cleared.
+#'
+#' @param record_endpoint A length-one character vector
+#' @param fields A list
+#' @export
+
+airtable_PUT <- function(record_endpoint, fields) {
+
+  stopifnot(is.list(fields))
+
+  req <- do.call(
+    "PUT", 
+    request_arguments(record_endpoint, fields), 
+    envir = loadNamespace("httr")
+  )
+
+  airtable_check(req)
+  req
+}
+
+
+#' Get common arguments for POST, PATCH, PUT request
+#' @param path
+#' @param body
+
+request_arguments <- function(path, body) {
+  list(
+    url = airtable_base_url(),
     path = file.path(
       airtable_api_version(),
       path
@@ -68,9 +133,6 @@ airtable_POST <- function(path, body) {
       )
     )
   )
-
-  airtable_check(req)
-  req
 }
 
 
