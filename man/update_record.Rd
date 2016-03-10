@@ -4,10 +4,12 @@
 \alias{update_record}
 \title{Update a record}
 \usage{
-update_record(airtable, record_id, fields, method = "PATCH")
+update_record(base, table, record_id, fields, method = "PATCH")
 }
 \arguments{
-\item{airtable}{An Airtable wrapper object}
+\item{base}{A list}
+
+\item{table}{A length-one character vector}
 
 \item{record_id}{A length-one character vector}
 

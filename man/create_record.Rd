@@ -4,10 +4,12 @@
 \alias{create_record}
 \title{Create a record to Airtalbe}
 \usage{
-create_record(airtable, fields)
+create_record(base, table, fields)
 }
 \arguments{
-\item{airtable}{An Airtable wrapper object}
+\item{base}{A list}
+
+\item{table}{A length-one character vector}
 
 \item{fields}{A list}
 }

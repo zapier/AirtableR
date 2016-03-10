@@ -4,11 +4,13 @@
 \alias{dispatch_request}
 \title{Dispatch a HTTP request for Airtable API}
 \usage{
-dispatch_request(airtable, resource_id = NULL, fields = NULL, method,
+dispatch_request(base, table, resource_id = NULL, fields = NULL, method,
   query = NULL)
 }
 \arguments{
-\item{airtable}{An Airtable wrapper object}
+\item{base}{A list}
+
+\item{table}{A length-one character vector}
 
 \item{resource_id}{An optional length-one character vector. The default is NULL.}
 

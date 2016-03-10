@@ -2,12 +2,12 @@
 #'
 #' \code{list_records} returns records by issuing GET request to a table endpoint
 #'
-#' @param airtable An Airtable wrapper object
+#' @param base A list 
+#' @param table A length-one character vector
 #' @param offset An optional length-one character vector
 #' @param filterByFormula An optional length-one character vector
-#' @export
 
-list_records <- function(airtable, offset = NULL, filterByFormula = NULL) { 
+list_records <- function(base, table, offset = NULL, filterByFormula = NULL) { 
 
   query <- list()
 
@@ -19,7 +19,13 @@ list_records <- function(airtable, offset = NULL, filterByFormula = NULL) {
     query <- append(query, list(filterByFormula = filterByFormula))
   }
 
-  req <- dispatch_request(airtable, method = "GET", query = query)
+  req <- 
+    dispatch_request(
+      base, 
+      table, 
+      method = "GET", 
+      query = query
+    ) 
 
   airtable_check(req) 
 
@@ -32,7 +38,8 @@ list_records <- function(airtable, offset = NULL, filterByFormula = NULL) {
       records <- append(
         records, 
         list_records(
-          airtable,
+          base,
+          table,
           offset = offset
         )
       )

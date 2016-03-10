@@ -4,10 +4,12 @@
 \alias{list_records}
 \title{List records form Airtable}
 \usage{
-list_records(airtable, offset = NULL, filterByFormula = NULL)
+list_records(base, table, offset = NULL, filterByFormula = NULL)
 }
 \arguments{
-\item{airtable}{An Airtable wrapper object}
+\item{base}{A list}
+
+\item{table}{A length-one character vector}
 
 \item{offset}{An optional length-one character vector}
 

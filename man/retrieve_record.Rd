@@ -4,10 +4,12 @@
 \alias{retrieve_record}
 \title{Retrieve a record from Airtable}
 \usage{
-retrieve_record(airtable, record_id)
+retrieve_record(base, table, record_id)
 }
 \arguments{
-\item{airtable}{An Airtable wrapper object}
+\item{base}{A list}
+
+\item{table}{A length-one character vector}
 
 \item{record_id}{A length-one character vector for record id. e.g "recbYejyoIyRBloTj"}
 }

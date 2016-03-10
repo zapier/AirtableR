@@ -3,17 +3,17 @@
 #' \code{update_record} updates a record by issuing PATCH or PUT request to a record endpoint. 
 #' Note that if you use PUT method, any fields that are not included will be cleared.
 #'
-#' @param airtable An Airtable wrapper object
+#' @param base A list 
+#' @param table A length-one character vector
 #' @param record_id A length-one character vector
 #' @param fields A list for fields
 #' @param method A length-one character vector. The default is "PATCH" 
 #' @return A request object
-#' @export
 
-update_record <- function(airtable, record_id, fields, method = "PATCH") {
-  stopifnot(is.list(fields)) 
+update_record <- function(base, table, record_id, fields, method = "PATCH") {
   req <- dispatch_request(
-    airtable, 
+    base,
+    table,
     resource_id = record_id, 
     fields = fields, 
     method = method

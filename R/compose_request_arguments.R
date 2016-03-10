@@ -1,17 +1,23 @@
 #' Compose request arguments
 #'
 #' \code{compose_request_arguments} composes \code{httr} request arguments as a list
-#' @param airtable An Airtable wrapper object
+#' @param base A list 
+#' @param table A length-one character vector
 #' @param resource_id An optional length-one character vector
 #' @param fields An optional list
 #' @param method A length-one character vector. e.g "put", "patch", ...
 #' @param query An optional list
 #' @return A list
 
-compose_request_arguments <- function(airtable, resource_id = NULL, fields= NULL, method, query = NULL) {
+compose_request_arguments <- function(base, table, resource_id = NULL, fields= NULL, method, query = NULL) {
+
   arguments <- list(
-    url     = airtable$base_url,
-    path    = compose_endpoint(airtable, resource_id),
+    url     = base$base_url,
+    path    = compose_endpoint(
+      base, 
+      table, 
+      resource_id
+    ),
     httr::add_headers(
       Authorization = paste(
         "Bearer",

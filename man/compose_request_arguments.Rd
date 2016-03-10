@@ -4,11 +4,13 @@
 \alias{compose_request_arguments}
 \title{Compose request arguments}
 \usage{
-compose_request_arguments(airtable, resource_id = NULL, fields = NULL,
+compose_request_arguments(base, table, resource_id = NULL, fields = NULL,
   method, query = NULL)
 }
 \arguments{
-\item{airtable}{An Airtable wrapper object}
+\item{base}{A list}
+
+\item{table}{A length-one character vector}
 
 \item{resource_id}{An optional length-one character vector}
 

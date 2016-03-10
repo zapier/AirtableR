@@ -42,6 +42,8 @@ airtable_check <- function(req) {
     return(invisible())
   }
 
+  print(httr::content(req))
+
   message <- 
     paste0(
       unname(

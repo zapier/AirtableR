@@ -2,15 +2,15 @@
 #'
 #' \code{create_record} creates an Airtable record remotely by issuing POST request to the table endpoint
 #'
-#' @param airtable An Airtable wrapper object 
+#' @param base A list
+#' @param table A length-one character vector
 #' @param fields A list
 #' @return A request object
-#' @export
 
-create_record <- function(airtable, fields) {
-  stopifnot(is.list(fields)) 
+create_record <- function(base, table, fields) {
   req <- dispatch_request(
-    airtable, 
+    base,
+    table,
     fields = fields, 
     method = "post"
   ) 
