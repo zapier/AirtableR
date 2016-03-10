@@ -23,7 +23,7 @@ Couldn't find env var AIRTABLE_KEY. See ?airtable_key for more details.
 Please enter your KEY and press enter:
 ```
 
-You can set Airtable API Key in `.Renviron` file.
+You can also set Airtable API Key in `.Renviron` file.
 ```r
 AIRTABLE_KEY=<YOUR API KEY HERE>
 ```
@@ -31,12 +31,40 @@ AIRTABLE_KEY=<YOUR API KEY HERE>
 ## Basic Usage
 ### List all Records
 ```r
-> airtable$archive$list_records()
+> records <- airtable$archive$list_records()
+```
+
+```r
+> str(records)
+
+List of 363
+ $ :List of 3
+  ..$ id         : chr "rec0E97Ze9J6iyLBW"
+  ..$ fields     :List of 19
+  .. ..$ permalink               : chr "nogarifilm"
+  .. ..$ is_live                 : chr "true"
+  .. ..$ amount                  : int 700000
+  .. ..$ count                   : int 13
+  .. ..$ start_date              : chr "2016-02-02"
 ```
 
 ### Retrieve a Record
 ```r
-> airtable$archive$retrieve_record("<RECORD_ID>")
+> record <- airtable$archive$retrieve_record("rec0E97Ze9J6iyLBW")
+```
+
+```r
+> str(record)
+
+List of 3
+ $ id         : chr "rec0E97Ze9J6iyLBW"
+ $ fields     :List of 19
+  ..$ permalink               : chr "nogarifilm"
+  ..$ is_live                 : chr "true"
+  ..$ amount                  : int 700000
+  ..$ count                   : int 13
+  ..$ start_date              : chr "2016-02-02"
+
 ```
 
 ### Create a Record
@@ -47,5 +75,8 @@ AIRTABLE_KEY=<YOUR API KEY HERE>
 ### Update
 ```r
 > airtable$archive$update_record("<RECORD_ID>", fields = list(field_name = "bar"))
+```
+
+```r
 > airtable$archive$update_record("<RECORD_ID>", fields = list(field_name = "foobar"), method = "put")
 ```
