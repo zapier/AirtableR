@@ -14,10 +14,9 @@ Airtable <- function(app, tables) {
     app         = app
   )
 
-  out         <- lapply(tables, function(x) airtable_funs(base, x)) 
-  names(out)  <- tables 
-  class(out)  <- "Airtable"
-
+  out             <- lapply(tables, function(x) airtable_funs(base, x)) 
+  names(out)      <- tables 
+  class(out)      <- "Airtable" 
   attr(out, "app") = app 
   return(out)
 } 
