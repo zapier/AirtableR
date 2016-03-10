@@ -7,37 +7,45 @@ For more information on the Airtable API see: http://api.airtable.com/
 
 ### Installation
 ```r
-> install.packages("AirtableR")
+> devtools::install_github("jsng/AirtableR")
 > library(AirtableR)
 ```
 
 ### Set API key
 Firstly, you should enter your Airtable API key.
 ```r
-> airtable <- Airtable("<YOUR APP NAME>", "<YOUR TABLE NAME>")
+> airtable <- Airtable(
+    app = "<YOUR APP NAME>", 
+    tables = c("archive", "items")
+  )
 
 Couldn't find env var AIRTABLE_KEY. See ?airtable_key for more details.
 Please enter your KEY and press enter:
 ```
 
+You can set Airtable API Key in `.Renviron` file.
+```r
+AIRTABLE_KEY=<YOUR API KEY HERE>
+```
+
 ## Basic Usage
 ### List all Records
 ```r
-> list_records(airtable)
+> airtable$archive$list_records()
 ```
 
 ### Retrieve a Record
 ```r
-> retrieve_record(airtable, "<RECORD_ID>")
+> airtable$archive$retrieve_record("<RECORD_ID>")
 ```
 
 ### Create a Record
 ```r
-> create_record(airtable, fields = list(field_name = "foo"))
+> airtable$archive$create_record(fields = list(field_name = "foo"))
 ```
 
 ### Update
 ```r
-> update_record(airtable, "<RECORD_ID>", fields = list(field_name = "bar"))
-> update_record(airtable, "<RECORD_ID>", fields = list(field_name = "foobar"), method = "put")
+> airtable$archive$update_record("<RECORD_ID>", fields = list(field_name = "bar"))
+> airtable$archive$update_record("<RECORD_ID>", fields = list(field_name = "foobar"), method = "put")
 ```
