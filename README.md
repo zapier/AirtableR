@@ -15,10 +15,11 @@ For more information on the Airtable API see: http://api.airtable.com/
 Firstly, you should enter your Airtable API key.
 ```r
 > airtable <- Airtable(
-    app = "<YOUR APP NAME>", 
-    tables = c("archive", "items")
+    app = "<YOUR APP NAME>", # e.g "appZNrwXN7bsOU0ta"
+    tables = c("archive", "items") # table names
   )
-
+```
+```r
 Couldn't find env var AIRTABLE_KEY. See ?airtable_key for more details.
 Please enter your KEY and press enter:
 ```
@@ -72,7 +73,7 @@ List of 3
 > airtable$archive$create_record(fields = list(field_name = "foo"))
 ```
 
-### Update
+### Update a Record
 ```r
 > airtable$archive$update_record("<RECORD_ID>", fields = list(field_name = "bar"))
 ```
