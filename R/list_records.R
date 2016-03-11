@@ -2,12 +2,12 @@
 #'
 #' \code{list_records} returns records by issuing GET request to a table endpoint
 #'
-#' @param base A list 
+#' @param air_options A list 
 #' @param table A length-one character vector
 #' @param offset An optional length-one character vector
 #' @param filterByFormula An optional length-one character vector
 
-list_records <- function(base, table, offset = NULL, filterByFormula = NULL) { 
+list_records <- function(air_options, table, offset = NULL, filterByFormula = NULL) { 
 
   query <- list()
 
@@ -21,7 +21,7 @@ list_records <- function(base, table, offset = NULL, filterByFormula = NULL) {
 
   req <- 
     dispatch_request(
-      base, 
+      air_options, 
       table, 
       method = "GET", 
       query = query
@@ -38,7 +38,7 @@ list_records <- function(base, table, offset = NULL, filterByFormula = NULL) {
       records <- append(
         records, 
         list_records(
-          base,
+          air_options,
           table,
           offset = offset
         )

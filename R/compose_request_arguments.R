@@ -1,7 +1,7 @@
 #' Compose request arguments
 #'
 #' \code{compose_request_arguments} composes \code{httr} request arguments as a list
-#' @param base A list 
+#' @param air_options A list 
 #' @param table A length-one character vector
 #' @param resource_id An optional length-one character vector
 #' @param fields An optional list
@@ -9,12 +9,12 @@
 #' @param query An optional list
 #' @return A list
 
-compose_request_arguments <- function(base, table, resource_id = NULL, fields= NULL, method, query = NULL) {
+compose_request_arguments <- function(air_options, table, resource_id = NULL, fields= NULL, method, query = NULL) {
 
   arguments <- list(
-    url     = base$base_url,
+    url     = air_options$base_url,
     path    = compose_endpoint(
-      base, 
+      air_options, 
       table, 
       resource_id
     ),
