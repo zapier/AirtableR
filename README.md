@@ -11,7 +11,7 @@ For more information on the Airtable API see: http://api.airtable.com/
 > library(Airtable.R)
 ```
 
-### Set API key
+### Authentication
 Firstly, you should enter your Airtable API key.
 ```r
 > airtable <- Airtable(
