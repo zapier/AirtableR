@@ -7,8 +7,8 @@ For more information on the Airtable API see: http://api.airtable.com/
 
 ### Installation
 ```r
-> devtools::install_github("jsng/AirtableR")
-> library(AirtableR)
+> devtools::install_github("jsng/Airtable.R")
+> library(Airtable.R)
 ```
 
 ### Set API key
