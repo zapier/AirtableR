@@ -4,11 +4,11 @@
 \alias{compose_request_arguments}
 \title{Compose request arguments}
 \usage{
-compose_request_arguments(base, table, resource_id = NULL, fields = NULL,
-  method, query = NULL)
+compose_request_arguments(air_options, table, resource_id = NULL,
+  fields = NULL, method, query = NULL)
 }
 \arguments{
-\item{base}{A list}
+\item{air_options}{A list}
 
 \item{table}{A length-one character vector}
 

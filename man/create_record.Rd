@@ -4,10 +4,10 @@
 \alias{create_record}
 \title{Create a record to Airtalbe}
 \usage{
-create_record(base, table, fields)
+create_record(air_options, table, fields)
 }
 \arguments{
-\item{base}{A list}
+\item{air_options}{A list}
 
 \item{table}{A length-one character vector}
 

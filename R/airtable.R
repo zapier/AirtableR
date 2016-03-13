@@ -57,5 +57,10 @@ airtable_funs <- function(air_options, table) {
       update_record(air_options, table, record_id, fields, method = method)
     }
 
+  res_list[["delete_record"]] <- 
+    function(record_id) {
+      delete_record(air_options, table, record_id)
+    }
+
   res_list
 }

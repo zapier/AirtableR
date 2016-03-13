@@ -4,10 +4,10 @@
 \alias{retrieve_record}
 \title{Retrieve a record from Airtable}
 \usage{
-retrieve_record(base, table, record_id)
+retrieve_record(air_options, table, record_id)
 }
 \arguments{
-\item{base}{A list}
+\item{air_options}{A list}
 
 \item{table}{A length-one character vector}
 

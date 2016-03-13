@@ -4,10 +4,10 @@
 \alias{Airtable}
 \title{Class: Airtable}
 \usage{
-Airtable(app, tables)
+Airtable(base, tables)
 }
 \arguments{
-\item{app}{A length-one character vector for app name}
+\item{base}{A length-one character vector for base name}
 
 \item{tables}{A character vector for tables}
 }

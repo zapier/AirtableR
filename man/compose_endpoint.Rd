@@ -4,10 +4,10 @@
 \alias{compose_endpoint}
 \title{Compose endpoint to a table or a table record}
 \usage{
-compose_endpoint(base, table, record_id = NULL)
+compose_endpoint(air_options, table, record_id = NULL)
 }
 \arguments{
-\item{base}{An Airtable wrapper object}
+\item{air_options}{A list}
 
 \item{table}{A length-one character vector}
 

@@ -4,16 +4,19 @@
 \alias{list_records}
 \title{List records form Airtable}
 \usage{
-list_records(base, table, offset = NULL, filterByFormula = NULL)
+list_records(air_options, table, offset = NULL, recursive = TRUE,
+  filter_by_formula = NULL)
 }
 \arguments{
-\item{base}{A list}
+\item{air_options}{A list}
 
 \item{table}{A length-one character vector}
 
 \item{offset}{An optional length-one character vector}
 
-\item{filterByFormula}{An optional length-one character vector}
+\item{recursive}{A length-one logical vector}
+
+\item{filter_by_formula}{An optional length-one character vector}
 }
 \description{
 \code{list_records} returns records by issuing GET request to a table endpoint

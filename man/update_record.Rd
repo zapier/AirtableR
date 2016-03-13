@@ -4,10 +4,10 @@
 \alias{update_record}
 \title{Update a record}
 \usage{
-update_record(base, table, record_id, fields, method = "PATCH")
+update_record(air_options, table, record_id, fields, method = "PATCH")
 }
 \arguments{
-\item{base}{A list}
+\item{air_options}{A list}
 
 \item{table}{A length-one character vector}
 
