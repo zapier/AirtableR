@@ -29,8 +29,17 @@ airtable_funs <- function(air_options, table) {
   res_list[["list_records"]] <- 
     function(
       offset = NULL, 
-      filterByFormula = NULL) {
-      list_records(air_options, table, offset, filterByFormula)
+      recursive = TRUE,
+      filter_by_formula = NULL
+    ) {
+
+      list_records(
+        air_options, 
+        table, 
+        offset, 
+        recursive,
+        filter_by_formula
+      )
     }
 
   res_list[["retrieve_record"]] <- 
