@@ -1,6 +1,6 @@
-Package: Airtable.R
+Package: AirtableR
 Title: R wrapper to Airtable API 
-Version: 0.0.1
+Version: 0.1.0
 Authors@R: person("Jaeseung", "Yum", email = "ym.jsng@gmail.com", role = c("aut", "cre"))
 Description: An implementation of R wrapper for Airtable API integration
 Depends: R (>= 3.2.2)

@@ -1,4 +1,4 @@
-# Airtable.R
+# AirtableR
 R wrapper to the Airtable API 
 
 For more information on the Airtable API see: http://api.airtable.com/
@@ -7,15 +7,15 @@ For more information on the Airtable API see: http://api.airtable.com/
 
 ### Installation
 ```r
-> devtools::install_github("jsng/Airtable.R")
-> library(Airtable.R)
+> devtools::install_github("jsng/AirtableR")
+> library(AirtableR)
 ```
 
 ### Authentication
 Firstly, you should enter your Airtable API key.
 ```r
 > airtable <- Airtable(
-    app = "<YOUR APP NAME>", # e.g "appZNrwXN7bsOU0ta"
+    base = "<YOUR BASE NAME>", # e.g "appZNrwXN7bsOU0ta"
     tables = c("archive", "items") # table names
   )
 ```
@@ -73,11 +73,51 @@ List of 3
 > airtable$archive$create_record(fields = list(field_name = "foo"))
 ```
 
+```
+Response [https://api.airtable.com/v0/<YOUR BASE NAME>/archive/<RECORD_ID>]
+  Date: 2016-03-13 12:57
+  Status: 200
+  Content-Type: application/json; charset=utf-8
+  Size: 41 B
+```
+
 ### Update a Record
 ```r
+# Issuing a PATCH request
 > airtable$archive$update_record("<RECORD_ID>", fields = list(field_name = "bar"))
 ```
 
+```
+Response [https://api.airtable.com/v0/<YOUR BASE NAME>/archive/<RECORD_ID>]
+  Date: 2016-03-13 12:57
+  Status: 200
+  Content-Type: application/json; charset=utf-8
+  Size: 41 B
+```
+
 ```r
+# Issuing a PUT request
 > airtable$archive$update_record("<RECORD_ID>", fields = list(field_name = "foobar"), method = "put")
 ```
+
+```
+Response [https://api.airtable.com/v0/<YOUR BASE NAME>/archive/<RECORD_ID>]
+  Date: 2016-03-13 12:57
+  Status: 200
+  Content-Type: application/json; charset=utf-8
+  Size: 41 B
+```
+
+### Delete a Record
+```r
+> airtable$archive$delete_record("<RECORD_ID>")
+```
+
+```
+Response [https://api.airtable.com/v0/<YOUR BASE NAME>/archive/<RECORD_ID>]
+  Date: 2016-03-13 12:57
+  Status: 200
+  Content-Type: application/json; charset=utf-8
+  Size: 41 B
+```
+
