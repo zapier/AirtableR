@@ -14,53 +14,50 @@ Airtable <- function(base, tables) {
     base         = base
   )
 
-  out             <- lapply(tables, function(x) airtable_funs(air_options, x))
-  names(out)      <- tables
-  class(out)      <- "Airtable"
-  attr(out, "base") = base
+  out             <- lapply(tables, function(x) airtable_funs(air_options, x)) 
+  names(out)      <- tables 
+  class(out)      <- "Airtable" 
+  attr(out, "base") = base 
   return(out)
-}
+} 
 
 
 airtable_funs <- function(air_options, table) {
 
   res_list <- list()
 
-  res_list[["list_records"]] <- function(
-    pageSize = NULL,
-    offset = NULL,
-    recursive = TRUE,
-    filter_by_formula = NULL,
-    maxRecords = NULL
-  ) {
+  res_list[["list_records"]] <- 
+    function(
+      offset = NULL, 
+      recursive = TRUE,
+      filter_by_formula = NULL
+    ) {
 
-    list_records(
-      air_options,
-      table,
-      pageSize,
-      offset,
-      recursive,
-      filter_by_formula,
-      maxRecords
-    )
-  }
+      list_records(
+        air_options, 
+        table, 
+        offset, 
+        recursive,
+        filter_by_formula
+      )
+    }
 
-  res_list[["retrieve_record"]] <-
+  res_list[["retrieve_record"]] <- 
     function(record_id) {
       retrieve_record(air_options, table, record_id)
     }
 
-  res_list[["create_record"]] <-
+  res_list[["create_record"]] <- 
     function(fields) {
       create_record(air_options, table, fields)
     }
 
-  res_list[["update_record"]] <-
+  res_list[["update_record"]] <- 
     function(record_id, fields, method = "PATCH") {
       update_record(air_options, table, record_id, fields, method = method)
     }
 
-  res_list[["delete_record"]] <-
+  res_list[["delete_record"]] <- 
     function(record_id) {
       delete_record(air_options, table, record_id)
     }
